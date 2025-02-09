@@ -47,7 +47,8 @@ public class registration {
 
     public static void createAccount(){
         try(FileWriter writer = new FileWriter("./data/users.txt", true)){
-            writer.write(id + " " + firstName + " " + lastName + " " + email + " " + password + "\n");
+            writer.write(id + " " + firstName + " " + lastName + " " + email + " " + password);
+            writer.write("\n");
             writer.close();
             System.out.println("You have successfully created an account!");
         }catch(IOException e){
