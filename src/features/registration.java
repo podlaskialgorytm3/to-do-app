@@ -5,7 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.util.Scanner;
 
 public class registration {
@@ -40,7 +39,7 @@ public class registration {
             }
         }while(!isCorrectPassword(password));     
         scanner.close();
-        id = generateRandomId(12);
+        id = util.generateRandomId(12);
         password = hashPassword(password);
         createAccount();
         }
@@ -82,16 +81,6 @@ public class registration {
             return false;
         }
         return true;
-    }
-
-    public static String generateRandomId(int length) {
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+";
-        SecureRandom random = new SecureRandom();
-        StringBuilder id = new StringBuilder(length);
-        for (int i = 0; i < length; i++) {
-            id.append(characters.charAt(random.nextInt(characters.length())));
-        }
-        return id.toString();
     }
 
     public static String hashPassword(String password) {
