@@ -25,5 +25,15 @@ public class login {
         }while(!registration.isCorrectPassword(password)); 
         scanner.close();
     }
+
+    public static boolean isCorrectLoginData(){
+        user.gettingData();
+        for (user u : user.users) {
+            if(u.email.equals(email) && u.password.equals(registration.hashPassword(password))){
+                return true;
+            }
+        }
+        return false;
+    }
     
 }
