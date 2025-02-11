@@ -7,7 +7,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
-public class registration {
+public class Registration {
     public static String id;
     public static String firstName;
     public static String lastName;
@@ -39,7 +39,7 @@ public class registration {
             }
         }while(!isCorrectPassword(password));     
         scanner.close();
-        id = util.generateRandomId(12);
+        id = Util.generateRandomId(12);
         password = hashPassword(password);
         createAccount();
         }

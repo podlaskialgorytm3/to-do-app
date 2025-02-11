@@ -2,73 +2,83 @@ package features;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class menu {
+public class Menu {
+    private static final Scanner scanner = new Scanner(System.in); 
+
     public static void chooseMainOption() throws IOException {
-        Scanner scanner = new Scanner(System.in);
-        int option = -1;
-        while(option < 1 || option > 3){
+        while (true) {
             System.out.println("Choose one option.");
             System.out.println("1. Register");
             System.out.println("2. Login");
             System.out.println("3. Exit");
-            if(scanner.hasNextInt()){
-                option = scanner.nextInt();
+
+            if (scanner.hasNextInt()) {
+                int option = scanner.nextInt();
+                scanner.nextLine();
+
                 switch (option) {
                     case 1:
-                        registration.gettingRegistationData();
+                        Registration.gettingRegistationData();
                         break;
                     case 2:
-                        login.gettingLoginData();
-                        if (login.isCorrectLoginData()) {
+                        Login.gettingLoginData();
+                        if (Login.isCorrectLoginData()) {
                             System.out.println("You are logged in.");
-                            chooseOptionAfterLogin();
+                            chooseOptionAfterLogin(); 
                         } else {
                             System.out.println("You are not logged in.");
                         }
                         break;
                     case 3:
                         System.out.println("Goodbye!");
-                        break;
+                        return; 
                     default:
                         System.out.println("Wrong option.");
                 }
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                if (scanner.hasNextLine()) { 
+                    scanner.nextLine(); 
+                }
             }
-            else{
-                break;
-            }
-            scanner.close();
         }
     }
-    public static void chooseOptionAfterLogin() throws IOException{
-        Scanner scanner = new Scanner(System.in);
-        int loggedOption = 1;
-        while(loggedOption < 1 || loggedOption > 4){
-            System.out.println("Choose one option.");
+
+    public static void chooseOptionAfterLogin() throws IOException {
+        while (true) {
+            System.out.println("Choose one option:");
             System.out.println("1. Creating tasks.");
             System.out.println("2. Showing tasks.");
             System.out.println("3. Updating status of task.");
             System.out.println("4. Exit");
-            if(scanner.hasNextInt()){
-                loggedOption = scanner.nextInt();
+
+            if (scanner.hasNextInt()) {
+                int loggedOption = scanner.nextInt();
+                scanner.nextLine();
+
                 switch (loggedOption) {
                     case 1:
-                        task.gettingDataToTask();
+                        System.out.println("Creating a task...");
+                        Task.gettingDataToTask();
                         break;
                     case 2:
+                        System.out.println("Showing tasks... (tu dodaj kod)");
                         break;
                     case 3:
+                        System.out.println("Updating task status... (tu dodaj kod)");
                         break;
                     case 4:
                         System.out.println("Goodbye!");
-                        break;
+                        return;
                     default:
-                        System.out.println("Wrong option.");
+                        System.out.println("Wrong option. Please choose a number between 1 and 4.");
+                }
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                if (scanner.hasNextLine()) { 
+                    scanner.nextLine(); 
                 }
             }
-            else{
-                break;
-            }
         }
-        scanner.close();
     }
 }

@@ -1,9 +1,9 @@
-//import features.menu;
-import features.task;
+import features.Menu;
+//import features.task;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        //menu.chooseMainOption();
-        task.gettingDataToTask();
+        Menu.chooseMainOption();
+        //task.gettingDataToTask();
     }
 }

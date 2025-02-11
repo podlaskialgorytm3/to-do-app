@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class task {
+public class Task {
     public static String taskId;
     public static String taskName;
     public static String taskDescription;
@@ -28,7 +28,7 @@ public class task {
     }
 
     public static void gettingDataToTask(){
-        taskId = util.generateRandomId(12);
+        taskId = Util.generateRandomId(12);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Task name:");
         taskName = scanner.nextLine();

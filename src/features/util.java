@@ -2,7 +2,7 @@ package features;
 
 import java.security.SecureRandom;
 
-public class util {
+public class Util {
     public static String generateRandomId(int length) {
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+";
         SecureRandom random = new SecureRandom();

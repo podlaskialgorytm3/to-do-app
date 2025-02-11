@@ -4,16 +4,16 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class user {
+public class User {
     public String id;
     public String firstName;
     public String lastName;
     public String email;
     public String password;
 
-    public static ArrayList<user> users = new ArrayList<user>();
+    public static ArrayList<User> users = new ArrayList<User>();
 
-    user(String id, String firstName, String lastName, String email, String password){
+    User(String id, String firstName, String lastName, String email, String password){
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -27,7 +27,7 @@ public class user {
             while ((line = br.readLine()) != null) {
                 String[] userData = line.split(" ");
                 if (userData.length == 5) {
-                    user newUser = new user(userData[0], userData[1], userData[2], userData[3], userData[4]);
+                    User newUser = new User(userData[0], userData[1], userData[2], userData[3], userData[4]);
                     users.add(newUser);
                 }
             }
@@ -38,7 +38,7 @@ public class user {
 
     public static void printUsers() {
         gettingData();
-        for (user u : users) {
+        for (User u : users) {
             System.out.println("ID: " + u.id);
             System.out.println("First Name: " + u.firstName);
             System.out.println("Last Name: " + u.lastName);
