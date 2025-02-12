@@ -36,6 +36,24 @@ public class User {
         }
     }
 
+    public static User getUserByEmail(String email) {
+        gettingData();
+        for (User u : users) {
+            if (u.email.equals(email)) {
+                return u;
+            }
+        }
+        return null;
+    }
+
+    public static void printUser(User user){
+        System.out.println("ID: " + user.id);
+        System.out.println("First Name: " + user.firstName);
+        System.out.println("Last Name: " + user.lastName);
+        System.out.println("Email: " + user.email);
+        System.out.println("Password: " + user.password);
+    }
+
     public static void printUsers() {
         gettingData();
         for (User u : users) {

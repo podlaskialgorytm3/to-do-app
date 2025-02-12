@@ -39,7 +39,10 @@ public class Login {
         gettingLoginData();
         if(isCorrectLoginData()){
             System.out.println("You are logged in.");
-            AccessCode.main(null);
+            User user = User.getUserByEmail(email);
+            AccessCode accessCode = new AccessCode(user.id);
+            accessCode.printCode();
+            
         }else{
             System.out.println("You are not logged in.");
         }
