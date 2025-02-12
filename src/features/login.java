@@ -41,6 +41,7 @@ public class Login {
             System.out.println("You are logged in.");
             User user = User.getUserByEmail(email);
             AccessCode accessCode = new AccessCode(user.id);
+            accessCode.deleteCodeByUserId(user.id);
             accessCode.printCode();
             
         }else{

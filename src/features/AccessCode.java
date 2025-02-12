@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 public class AccessCode {
@@ -47,8 +49,27 @@ public class AccessCode {
     }
     }
 
-    public static void main(String[] args) {
-        AccessCode accessCode = new AccessCode(args[0]);
-        accessCode.printCode();
-    }
+    public void  deleteCodeByUserId(String userId){
+            System.out.println("Deleting access code...");
+            try(BufferedReader reader = new BufferedReader(new FileReader("./data/access-code.txt"))){
+                String line;
+                String data = "";
+                while((line = reader.readLine()) != null){
+                    String[] accessCodeData = line.split(" ");
+                    if(accessCodeData.length == 3){
+                        if(!accessCodeData[0].equals(userId)){
+                            data += line + "\n";
+                        }
+                    }
+                }
+                FileWriter writer = new FileWriter("./data/access-code.txt");
+                writer.write(data);
+                writer.close();
+                System.out.println("Access code has been deleted!");
+                
+            }
+            catch(IOException e){
+                System.out.println("Read error: " + e.getMessage());
+            }
+        }
 }
