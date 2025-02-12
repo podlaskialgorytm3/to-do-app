@@ -56,7 +56,7 @@ public class AccessCode {
                     String data = "";
                     while((line = reader.readLine()) != null){
                         String[] accessCodeData = line.split(" ");
-                        if(accessCodeData.length == 3){
+                        if(accessCodeData.length == 4){
                             if(!accessCodeData[0].equals(userId)){
                                 data += line + "\n";
                             }
