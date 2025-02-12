@@ -35,5 +35,14 @@ public class Login {
         }
         return false;
     }
+    public static void login(){
+        gettingLoginData();
+        if(isCorrectLoginData()){
+            System.out.println("You are logged in.");
+            AccessCode.main(null);
+        }else{
+            System.out.println("You are not logged in.");
+        }
+    }
     
 }
