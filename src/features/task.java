@@ -6,9 +6,14 @@ import java.util.Scanner;
 
 public class Task {
     public static String taskId;
+    public static String userId;
     public static String taskName;
     public static String taskDescription;
     public static TaskStatus taskStatus;
+
+    public Task (int code){
+        userId = User.getUserIdByCode(code);
+    }
 
     public enum TaskStatus {
         WAITING("waiting"),
@@ -27,7 +32,7 @@ public class Task {
         }
     }
 
-    public static void gettingDataToTask(){
+    public void gettingDataToTask(){
         taskId = Util.generateRandomId(12);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Task name:");
@@ -45,7 +50,7 @@ public class Task {
 
     public static void createTask() throws IOException{
         try (FileWriter writer = new FileWriter("./data/tasks.txt", true)) {
-            writer.write(taskId + " " + taskName + " " + taskDescription + " " + taskStatus);
+            writer.write(userId + " " + taskId + " |" + taskName + "| |" + taskDescription + "| " + taskStatus);
             writer.write("\n");
             writer.close();
             System.out.println("You have successfully created a task!");
