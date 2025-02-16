@@ -46,6 +46,24 @@ public class User {
         return null;
     }
 
+    public static String getUserIdByCode(int code){
+        try(BufferedReader reader = new BufferedReader(new FileReader("./data/access-code.txt"))){
+            String line;
+            while((line = reader.readLine()) != null){
+                String[] accessCodeData = line.split(" ");
+                if(accessCodeData.length == 4){
+                    if(Integer.parseInt(accessCodeData[3]) == code){
+                        return accessCodeData[0];
+                    }
+                }
+            }
+        }
+        catch(IOException e){
+            System.out.println("Read error: " + e.getMessage());
+        }
+        return null;
+    }
+
     public static void printUser(User user){
         System.out.println("ID: " + user.id);
         System.out.println("First Name: " + user.firstName);
@@ -62,7 +80,6 @@ public class User {
             System.out.println("Last Name: " + u.lastName);
             System.out.println("Email: " + u.email);
             System.out.println("Password: " + u.password);
-            System.out.println();
         }
     }
 }
