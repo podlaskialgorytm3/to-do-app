@@ -1,6 +1,7 @@
 package features;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Command {
     public final String command;
@@ -37,11 +38,9 @@ public class Command {
             }
             if (args[i].equals(TASK.command)) {
                 if (isCorrectCode) {
-                    String userId = User.getUserIdByCode(getCode(args));
-                    Task task = new Task(null, userId, null, null, null);
-                    task.gettingDataToTask();
+                    Task.taskCommands(Arrays.copyOfRange(args, 3, args.length), getCode(args));
                 } else {
-                    System.out.println("You have to log in first!");
+                    System.out.println("You have to enter correct code!");
                 }
             }
         }
@@ -55,15 +54,6 @@ public class Command {
         System.out.println("  -c <code>\t\tCheck access code");
         System.out.println("  -h\t\t\tHelp");
         System.out.println("  -t\t\t\tTask (Check also task command -t -h)");
-    }
-
-    public static void helpTask() {
-        System.out.println("Usage: java <jar-file> -t [options]");
-        System.out.println("Options:");
-        System.out.println(" -t -c\t\tCreate task");
-        System.out.println(" -t -h\t\tHelp");
-        System.out.println(" -t -s\t\t\\Show tasks");
-
     }
 
     public static int getCode(String[] args) {
